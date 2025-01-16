@@ -5,13 +5,13 @@
 public class CustomerService {
     public static void Run() {
         // Example code to see what's in the customer service queue:
-        // var cs = new CustomerService(10);
-        // Console.WriteLine(cs);
+        var cs = new CustomerService(10);
+        Console.WriteLine(cs);
 
         // Test Cases
 
         // Test 1
-        // Scenario: 
+        // Scenario: user specify the max size when created. if size invalid ( size <= 0 ) default = 10
         // Expected Result: 
         Console.WriteLine("Test 1");
 
@@ -20,7 +20,7 @@ public class CustomerService {
         Console.WriteLine("=================");
 
         // Test 2
-        // Scenario: 
+        // Scenario: check to see if AddNewCustomer method will add customer to queue
         // Expected Result: 
         Console.WriteLine("Test 2");
 
@@ -28,7 +28,34 @@ public class CustomerService {
 
         Console.WriteLine("=================");
 
-        // Add more Test Cases As Needed Below
+
+        // Test 3
+        // Scenario: if queue is full, customer can't be added
+        // Expected Result: throw error message
+        Console.WriteLine("Test 3");
+
+        // Defect(s) Found: 
+
+        Console.WriteLine("=================");
+    
+        // Test 4
+        // Scenario: serve customer dequeue
+        // Expected Result: 
+        Console.WriteLine("Test 4");
+
+        // Defect(s) Found: 
+
+        Console.WriteLine("=================");
+
+    
+        // Test 5
+        // Scenario: if queue empty and try to dequeue, throw error
+        // Expected Result: 
+        Console.WriteLine("Test 5");
+
+        // Defect(s) Found: 
+
+        Console.WriteLine("=================");
     }
 
     private readonly List<Customer> _queue = new();
@@ -88,9 +115,9 @@ public class CustomerService {
     /// Dequeue the next customer and display the information.
     /// </summary>
     private void ServeCustomer() {
-        _queue.RemoveAt(0);
         var customer = _queue[0];
         Console.WriteLine(customer);
+        _queue.RemoveAt(0);
     }
 
     /// <summary>

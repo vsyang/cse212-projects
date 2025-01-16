@@ -107,7 +107,7 @@ public class CustomerServiceSolution {
     private void AddNewCustomer() {
         // Verify there is room in the service queue
         // if (_queue.Count > _maxSize) // Defect 3 - should use >=
-        if (_queue.Count >= _maxSize) {
+        if (_queue.Count > _maxSize) {
             Console.WriteLine("Maximum Number of Customers in Queue.");
             return;
         }
@@ -129,15 +129,15 @@ public class CustomerServiceSolution {
     /// </summary>
     private void ServeCustomer() {
         // Need to check if there are customers in our queue
-        if (_queue.Count <= 0) // Defect 2 - Need to check queue length
+        if (_queue.Count == 0) // Defect 2 - Need to check queue length
         {
             Console.WriteLine("No Customers in the queue");
         }
         else {
             // Need to read and save the customer before it is deleted from the queue
             var customer = _queue[0];
-            _queue.RemoveAt(0); // Defect 1 - Delete should be done after
             Console.WriteLine(customer);
+            _queue.RemoveAt(0); // Defect 1 - Delete should be done after
         }
     }
 
